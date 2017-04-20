@@ -32,7 +32,10 @@ end
 function Load_Callback(hObject, eventdata, handles)
 [fname,pname] = uigetfile('*.mat');
 if ischar(fname) && ischar(pname)
+    warn_state = warning;
+    warning('off','all')
     load([pname,fname],'EEG')
+    warning(warn_state)
     if exist('EEG','var')
         handles = load_EEG(handles,EEG,[pname,fname]);
     else
@@ -69,6 +72,7 @@ if ~isempty(ws)
         EEG = evalin('base',arrname);
         if isnumeric(EEG)
             handles = import_EEG(handles,EEG,arrname);
+            handles = set_segindicator(handles,false);
         else
             handles = load_EEG(handles,EEG,arrname);
         end
@@ -94,6 +98,7 @@ if isfield(handles,'EEG')
     end
     if ~isempty(arrname)
         assignin('base',arrname{1},handles.EEG);
+        handles = set_fname(handles,arrname{1});
     end
 else
     errordlg('No loaded EEG data structure!','Export Error')
@@ -165,7 +170,7 @@ if isfield(handles,'EEG') && strcmp(get(handles.segindicator,'String'),"true") .
         ylabel(['amplitude [',strings{get(handles.Amplabel,'Value')},']'],'Fontsize',20,'Fontweight','bold')
     end
 else
-    errordlg('EEG data, segmentation structure, time structure, or info entries are missing!','Plot Error')
+    errordlg('EEG data, segmentation structure, or time structure are missing!','Plot Error')
 end
 guidata(hObject, handles);
 end
