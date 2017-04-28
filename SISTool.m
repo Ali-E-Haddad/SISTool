@@ -146,7 +146,7 @@ guidata(hObject, handles);
 end
 
 function Plot_Callback(hObject, eventdata, handles)
-if isfield(handles,'EEG') && strcmp(get(handles.segindicator,'String'),"true") ...
+if isfield(handles,'EEG') && strcmp(get(handles.segindicator,'String'),'true') ...
         && isfield(handles.EEG,'time')
     EEGdata    = handles.EEG.data;
     ntrials    = str2double(get(handles.ntrials,'String'));
@@ -164,7 +164,7 @@ if isfield(handles,'EEG') && strcmp(get(handles.segindicator,'String'),"true") .
         figure, plot(time,EEGdata(:,:,trial)')
         pnts = [segpnts{trial},time(end)];
         set(gca,'xlim',[time(1),time(end)],'XTick',pnts,'XTickLabel',num2str(pnts'))
-        set(gca,'XGrid','on','FontSize',14,'Fontweight','bold','GridAlpha',1)
+        set(gca,'XGrid','on','FontSize',14,'Fontweight','bold','GridLineStyle','-')
         xlabel('segment boundaries [msec]','Fontsize',20,'Fontweight','bold')
         strings = get(handles.Amplabel,'String');
         ylabel(['amplitude [',strings{get(handles.Amplabel,'Value')},']'],'Fontsize',20,'Fontweight','bold')
@@ -537,7 +537,11 @@ end
 end
 
 function handles = set_segindicator(handles,segindicator)
-set(handles.segindicator,'String',string(segindicator))
+if segindicator
+    set(handles.segindicator,'String','true')
+else
+    set(handles.segindicator,'String','false')
+end
 end
 
 function handles = set_segpnts(handles,segpnts)
