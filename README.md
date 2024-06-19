@@ -1,7 +1,7 @@
 Source-Informed Segmentation Tool (SISTool) toolbox for MATLAB:
 ---------------------------------------------------------------
 SISTool is an open-source toolbox for segmenting EEG data using the source-informed segmentation algorithm
-proposed in [1-3].
+proposed in [1-4].
 
 
 
@@ -55,14 +55,18 @@ MATLAB's workspace.
 
 References:
 -----------
-[1] Ali E. Haddad, Laleh Najafizadeh, "Global EEG segmentation using singular value
+[1] Ali E. Haddad and Laleh Najafizadeh, "Source-informed segmentation: A data-driven
+    approach for the temporal segmentation of EEG," IEEE Transactions on Biomedical
+    Engineering, vol. 66, no. 5, pp. 1429-1446, 2019.
+
+[2] Ali E. Haddad, Laleh Najafizadeh, "Global EEG segmentation using singular value
     decomposition," 37th Annual International Conference of the IEEE Engineering
     in Medicine and Biology Society (EMBC), IEEE, 2015, pp. 558-561.
 
-[2] Ali Haddad, Laleh Najafizadeh, "Multi-scale analysis of the dynamics of brain
+[3] Ali Haddad, Laleh Najafizadeh, "Multi-scale analysis of the dynamics of brain
     functional connectivity using EEG," IEEE Biomedical Circuits and Systems
     Conference (BioCAS), IEEE, 2016, pp. 240-243.
 
-[3] Ali Haddad, Laleh Najafizadeh, "Source-informed segmentation: Towards capturing
+[4] Ali Haddad, Laleh Najafizadeh, "Source-informed segmentation: Towards capturing
     the dynamics of brain functional networks through EEG," 50th Asilomar Conference
     on Signals, Systems and Computers, IEEE, 2016, pp. 1290-1294.
